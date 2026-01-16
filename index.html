@@ -18,7 +18,7 @@ body {
     color: white;
 }
 
-/* Birthday Card */
+/* Card */
 .card {
     text-align: center;
     background: rgba(255,255,255,0.12);
@@ -40,7 +40,6 @@ h1 {
 p {
     font-size: 1.15em;
     line-height: 1.8;
-    opacity: 0.95;
 }
 
 /* Animations */
@@ -54,28 +53,33 @@ p {
     50% { transform: scale(1.05); }
 }
 
-/* Floating Hearts */
+/* Floating hearts */
 .heart {
     position: absolute;
-    color: pink;
     font-size: 20px;
     animation: float 8s linear infinite;
 }
 
 @keyframes float {
-    from {
-        transform: translateY(100vh);
-        opacity: 1;
-    }
-    to {
-        transform: translateY(-10vh);
-        opacity: 0;
-    }
+    from { transform: translateY(100vh); opacity: 1; }
+    to { transform: translateY(-10vh); opacity: 0; }
+}
+
+/* Click text */
+.tap {
+    margin-top: 15px;
+    font-size: 0.9em;
+    opacity: 0.8;
 }
 </style>
 </head>
 
 <body>
+
+<!-- Autoplay Audio (Muted initially) -->
+<audio id="music" autoplay loop muted>
+    <source src="song.mp3" type="audio/mpeg">
+</audio>
 
 <div class="card">
     <h1>🎉 Happy Birthday Utkarsh 🎂</h1>
@@ -83,14 +87,15 @@ p {
         On this special day, I just want you to know how incredibly special you are.  
         You have a way of making moments brighter, smiles easier, and hearts feel safe.  
         Your presence itself feels like comfort, and your kindness leaves a mark that words can’t fully describe.  
-        May this year give you everything you deserve — happiness, success, peace, and endless reasons to smile.  
+        May this year give you happiness, success, peace, and endless reasons to smile.  
         Never forget how valued and loved you truly are.  
-        Today isn’t just your birthday… it’s a reminder that the world is better because **you exist** 💫
+        Today isn’t just your birthday… the world is better because **you exist** 💫
     </p>
+    <div class="tap">✨ Tap anywhere to play music ✨</div>
 </div>
 
 <script>
-// Floating hearts generator
+// Floating hearts
 function createHeart() {
     const heart = document.createElement("div");
     heart.classList.add("heart");
@@ -99,13 +104,16 @@ function createHeart() {
     heart.style.fontSize = Math.random() * 20 + 15 + "px";
     heart.style.animationDuration = Math.random() * 3 + 5 + "s";
     document.body.appendChild(heart);
-
-    setTimeout(() => {
-        heart.remove();
-    }, 8000);
+    setTimeout(() => heart.remove(), 8000);
 }
-
 setInterval(createHeart, 300);
+
+// Unmute on first click
+document.body.addEventListener("click", () => {
+    const music = document.getElementById("music");
+    music.muted = false;
+    music.play();
+}, { once: true });
 </script>
 
 </body>
