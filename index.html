@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday Utkarsh 🎉</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    font-family: 'Segoe UI', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+/* Birthday Card */
+.card {
+    text-align: center;
+    background: rgba(255,255,255,0.12);
+    padding: 35px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 30px rgba(255,182,193,0.6);
+    max-width: 700px;
+    animation: glow 3s infinite alternate;
+    z-index: 2;
+}
+
+h1 {
+    font-size: 3em;
+    margin-bottom: 15px;
+    animation: pop 2s infinite;
+}
+
+p {
+    font-size: 1.15em;
+    line-height: 1.8;
+    opacity: 0.95;
+}
+
+/* Animations */
+@keyframes glow {
+    from { box-shadow: 0 0 20px rgba(255,182,193,0.4); }
+    to { box-shadow: 0 0 45px rgba(255,182,193,0.9); }
+}
+
+@keyframes pop {
+    0%,100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+/* Floating Hearts */
+.heart {
+    position: absolute;
+    color: pink;
+    font-size: 20px;
+    animation: float 8s linear infinite;
+}
+
+@keyframes float {
+    from {
+        transform: translateY(100vh);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-10vh);
+        opacity: 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <h1>🎉 Happy Birthday Utkarsh 🎂</h1>
+    <p>
+        On this special day, I just want you to know how incredibly special you are.  
+        You have a way of making moments brighter, smiles easier, and hearts feel safe.  
+        Your presence itself feels like comfort, and your kindness leaves a mark that words can’t fully describe.  
+        May this year give you everything you deserve — happiness, success, peace, and endless reasons to smile.  
+        Never forget how valued and loved you truly are.  
+        Today isn’t just your birthday… it’s a reminder that the world is better because **you exist** 💫
+    </p>
+</div>
+
+<script>
+// Floating hearts generator
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = Math.random() * 20 + 15 + "px";
+    heart.style.animationDuration = Math.random() * 3 + 5 + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 8000);
+}
+
+setInterval(createHeart, 300);
+</script>
+
+</body>
+</html>
